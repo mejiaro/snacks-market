@@ -12,7 +12,7 @@ RSpec.describe 'Products API', type: :request do
 
 		it 'returns products' do
 			expect(json).not_to be_empty
-			expect(json.size).to eq(10)
+			expect(json.size).to eq(10) #the numbers of records created
 		end
 
 		it 'returns status code 200' do
@@ -27,9 +27,9 @@ RSpec.describe 'Products API', type: :request do
 		before {get "/products/#{product_id}"}
 
 		context 'when the record exists' do
-			it 'returns the todo' do
+			it 'returns the product' do
 				expect(json).not_to be_empty
-				expect(json.size).to eq(product_id)
+				expect(json['id']).to eq(product_id)
 			end
 
 			it 'returns status code 200' do
@@ -45,7 +45,7 @@ RSpec.describe 'Products API', type: :request do
 			end
 
 			it 'returns a not found message' do
-				expect(response.body).to match(/Couldn't find product/ )
+				expect(response.body).to include("Couldn't find Product")
 			end
 
 		end
@@ -62,7 +62,7 @@ RSpec.describe 'Products API', type: :request do
 
 			it 'creates a product' do
 				expect(json['name']).to eq('Overwatch')
-				expect(json['stock']).to eq('6')
+				expect(json['stock']).to eq(6)
 				expect(json['price']).to eq('39.99')
 			end
 
