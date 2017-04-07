@@ -1,10 +1,15 @@
 class ProductsController < ApplicationController
+  skip_before_action :authorize_request, only: [:index, :search]
 	before_action :set_product, only: [:show, :update, :destroy]
 
   # GET /products
   def index
     @products = Product.all
     json_response(@products)
+  end
+
+  def search
+    
   end
 
   # POST /products

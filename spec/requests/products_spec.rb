@@ -2,13 +2,15 @@ require 'rails_helper'
 
 RSpec.describe 'Products API', type: :request do
 	#initialize test data
+	let(:user) { create(:user) }
 	let!(:products) { create_list(:product, 10) }
 	let(:product_id) { products.first.id }
+	let(:headers) { valid_headers}
 
 
 	#tests for get /prodcuts
 	describe 'GET /products' do
-		before { get '/products' }
+		before { get '/products', params: {}, headers: headers }
 
 		it 'returns products' do
 			expect(json).not_to be_empty
@@ -24,7 +26,7 @@ RSpec.describe 'Products API', type: :request do
 	#tests for get /products/:id
 
 	describe 'GET /products/:id' do
-		before {get "/products/#{product_id}"}
+		before {get "/products/#{product_id}", params: {}, headers: headers}
 
 		context 'when the record exists' do
 			it 'returns the product' do
@@ -55,33 +57,37 @@ RSpec.describe 'Products API', type: :request do
 	describe 'POST /products' do
 
 		#valid
-		let(:valid_attributes) { { name: 'Overwatch', stock: '6', price: '39.99' } }
+		let(:valid_attributes) do
 
-		context 'when the request is valid' do
-			before { post '/products', params: valid_attributes}
+			{ name: 'Overwatch', stock: '6', price: '39.99' }.to_json
 
-			it 'creates a product' do
-				expect(json['name']).to eq('Overwatch')
-				expect(json['stock']).to eq(6)
-				expect(json['price']).to eq('39.99')
+			context 'when the request is valid' do
+				before { post '/products', params: valid_attributes, headers: headers}
+
+				it 'creates a product' do
+					expect(json['name']).to eq('Overwatch')
+					expect(json['stock']).to eq(6)
+					expect(json['price']).to eq('39.99')
+				end
+
+				it 'returns 201' do
+					expect(response).to have_http_status(201)
+				end
+
 			end
 
-			it 'returns 201' do
-				expect(response).to have_http_status(201)
+			context 'the request is invalid' do
+				before { post '/products', params: { name: 'Starcraft'}, headers: headers }
+
+				it 'returns 422' do
+					expect(response).to have_http_status(422)
+				end
+
+				it 'returns a validation failure message' do
+					expect(response.body).to match(/Validation failed:/)
+				end
 			end
 
-		end
-
-		context 'the request is invalid' do
-			before { post '/products', params: { name: 'Starcraft'} }
-
-			it 'returns 422' do
-				expect(response).to have_http_status(422)
-			end
-
-			it 'returns a validation failure message' do
-				expect(response.body).to match(/Validation failed:/)
-			end
 		end
 	end
 
@@ -89,10 +95,10 @@ RSpec.describe 'Products API', type: :request do
 	#test for PUT /products/:id
 
 	describe 'PUT /products/:id' do
-		let(:valid_attributes) { { name: 'Heartstone' } }
+		let(:valid_attributes) { { name: 'Heartstone' }.to_json }
 
 		context 'when the record exists' do
-			before { put "/products/#{product_id}", params: valid_attributes }
+			before { put "/products/#{product_id}", params: valid_attributes, headers: headers }
 
 			it 'updates the record' do
 				expect(response.body).to be_empty
@@ -106,7 +112,7 @@ RSpec.describe 'Products API', type: :request do
 
 	describe 'DELETE /products/:id' do
 		
-		before { delete "/products/#{product_id}"}
+		before { delete "/products/#{product_id}", params: {}, headers: headers}
 
 		it 'returns 204' do
 			expect(response).to have_http_status(204)
