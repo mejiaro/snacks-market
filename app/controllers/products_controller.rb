@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   skip_before_action :authorize_request, only: [:index, :search]
-	before_action :set_product, only: [:show, :update, :destroy]
+	before_action :set_product, only: [:show, :update, :destroy, :like]
 
   # GET /products
   def index
@@ -33,6 +33,11 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     head :no_content
+  end
+
+  def like
+    like = Like.create!(user_id: current_user.id, product_id: @product.id)
+    json_response(like, :created)
   end
 
   private
