@@ -39,6 +39,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
+    audited (4.4.1)
+      activerecord (>= 4.0, < 5.2)
     bcrypt (3.1.11)
     builder (3.2.3)
     byebug (9.0.6)
@@ -150,6 +152,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  audited
   bcrypt (~> 3.1.7)
   byebug
   database_cleaner

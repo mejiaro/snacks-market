@@ -21,6 +21,9 @@ gem 'bcrypt', '~> 3.1.7'
 #token based authentication
 gem 'jwt'
 
+#products' prices updates
+gem 'audited'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
