@@ -91,6 +91,42 @@ RSpec.describe 'Products API', type: :request do
 		end
 	end
 
+	describe 'POST /products/like' do
+
+		#valid
+	
+		let(:valid_attributes) { { product_id: product_id }.to_json }
+		
+
+		context 'when the request is valid' do
+			before { post '/products/like', params: valid_attributes, headers: headers}
+
+			it 'likes a product' do
+				expect(json['product_id']).to eq(product_id)
+				expect(json['user_id']).to eq(user.id)
+			end
+
+			it 'returns 201' do
+				expect(response).to have_http_status(201)
+			end
+
+		end
+
+		context 'the request is invalid' do
+			before { post '/products/like', params: { }, headers: headers }
+
+			it 'returns 422' do
+				expect(response).to have_http_status(422)
+			end
+
+			it 'returns a validation failure message' do
+				expect(response.body).to match(/Validation failed:/)
+			end
+		end
+
+		
+	end
+
 
 	#test for PUT /products/:id
 

@@ -4,4 +4,6 @@ class Like < ApplicationRecord
 
   validates_uniqueness_of :product, :scope => :user
 
+  validates_presence_of :user_id, :product_id
+
 end
