@@ -24,6 +24,9 @@ gem 'jwt'
 #products' prices updates
 gem 'audited'
 
+#product pagination
+gem 'will_paginate'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
