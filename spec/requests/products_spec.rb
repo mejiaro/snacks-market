@@ -4,6 +4,7 @@ RSpec.describe 'Products API', type: :request do
 	#initialize test data
 	let(:user) { create(:user) }
 	let(:admin) { create(:admin)}
+	let(:product) { create(:product) }
 	let!(:products) { create_list(:product, 10) }
 	let(:product_id) { products.first.id }
 	let(:headers) { valid_headers}
@@ -97,14 +98,14 @@ RSpec.describe 'Products API', type: :request do
 
 		#valid
 	
-		let(:valid_attributes) { { id: product_id }.to_json }
+		let(:valid_attributes) { { id: product.id }.to_json }
 		
 
 		context 'when the request is valid' do
-			before { post '/products/:id/like', params: valid_attributes, headers: headers}
+			before { post "/products/#{product.id}/like", params: valid_attributes, headers: headers}
 
 			it 'likes a product' do
-				expect(json['product_id']).to eq(product_id)
+				expect(json['product_id']).to eq(product.id)
 				expect(json['user_id']).to eq(user.id)
 			end
 
@@ -115,10 +116,10 @@ RSpec.describe 'Products API', type: :request do
 		end
 
 		context 'the request is invalid' do
-			before { post '/products/:id/like', params: { }, headers: headers }
+			before { post "/products/100/like", params: { }, headers: headers }
 
-			it 'returns 422' do
-				expect(response).to have_http_status(422)
+			it 'returns 404' do
+				expect(response).to have_http_status(404)
 			end
 
 			it 'returns a validation failure message' do
