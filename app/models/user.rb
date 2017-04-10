@@ -6,6 +6,8 @@ class User < ApplicationRecord
 	has_many :likes
 	has_many :products, through: :likes #liked products
 
+	has_many :orders
+
 	def admin?
 		is_admin		
 	end
