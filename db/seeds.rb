@@ -31,3 +31,32 @@ Product.create!(name: 'Airheads',
                	  stock: stock)
               
 end
+
+10.times do
+  name = Faker::RickAndMorty.character
+  User.create!(name: name,
+               email: name.delete(' ').downcase+'@snacks.io',
+               password: 'ilovesnacks',
+               is_admin: [true, false].sample)
+end
+
+User.create!(name: 'Admin',
+             email: 'admin@snacks.io',
+             password: '123456',
+             is_admin: true)
+
+
+users = User.all.sample(8)
+
+users.each do |user|
+  products = Product.all.sample(12)
+
+  products.each do |product|
+    Like.create!(product_id: product.id, user_id: user.id)
+  end
+  
+end
+
+
+
+
