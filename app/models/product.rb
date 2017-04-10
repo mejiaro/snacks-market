@@ -15,4 +15,9 @@ class Product < ApplicationRecord
 
     scope :starts_with, -> (name) { where("lower(name) like ?", "#{name.downcase}%")}
 
+    def reduce_stock(n)
+    	t = self.stock - n
+    	self.update_attributes(stock: t) 
+    end
+
 end

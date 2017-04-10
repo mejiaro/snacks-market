@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   	get 'search', on: :collection
   	post 'like', on: :member
   end
+  resources :orders, only: [:create]
   post 'auth/login', to: 'authentication#authenticate'
 end
