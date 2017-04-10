@@ -4,8 +4,15 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    @products = Product.paginate(page: params[:page], per_page: 10)
+
+    if params[:sort] == 'likes'
+      @products = Product.likes.paginate(page: params[:page], per_page: 10)
+    else
+      @products = Product.paginate(page: params[:page], per_page: 10)
+    end
+
     json_response(@products)
+
   end
 
   def search
