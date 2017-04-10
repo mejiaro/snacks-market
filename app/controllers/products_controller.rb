@@ -45,7 +45,7 @@ class ProductsController < ApplicationController
   end
 
   def like
-    like = Like.create!(user_id: current_user.id, product_id: @product.id)
+    like = current_user.likes.create!(product_id: @product.id)
     json_response(like, :created)
   end
 
