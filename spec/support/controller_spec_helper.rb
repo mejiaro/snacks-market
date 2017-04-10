@@ -9,6 +9,13 @@ module ControllerSpecHelper
 		JsonWebToken.encode({user_id: user_id}, (Time.now.to_i - 10))
 	end
 
+	def admin_headers
+		{
+			"Authorization" => token_generator(admin.id),
+			"Content-Type" => "application/json"
+		}
+	end
+
 
 	def valid_headers
 		{
