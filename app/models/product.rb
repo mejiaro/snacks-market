@@ -7,8 +7,6 @@ class Product < ApplicationRecord
 
     has_many :likes
 
-    def like_count
-    	likes.count
-    end
+    scope :likes_counts, -> { left_joins(:likes).group(:id).order('COUNT(product.id) DESC') }
 
 end
