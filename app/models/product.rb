@@ -11,4 +11,6 @@ class Product < ApplicationRecord
 
     scope :order_by_names, -> { order(:name) }
 
+    scope :starts_with, -> (name) { where("lower(name) like ?", "#{name.downcase}%")}
+
 end

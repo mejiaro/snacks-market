@@ -16,7 +16,8 @@ class ProductsController < ApplicationController
   end
 
   def search
-    
+    @products = Product.starts_with(params[:name]).paginate(page: params[:page], per_page: 10)
+    json_response(@products)
   end
 
   # POST /products
