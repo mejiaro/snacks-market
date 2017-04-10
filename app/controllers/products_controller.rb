@@ -6,9 +6,9 @@ class ProductsController < ApplicationController
   def index
 
     if params[:sort] == 'likes'
-      @products = Product.likes.paginate(page: params[:page], per_page: 10)
+      @products = Product.order_by_likes.paginate(page: params[:page], per_page: 10)
     else
-      @products = Product.paginate(page: params[:page], per_page: 10)
+      @products = Product.order_by_names.paginate(page: params[:page], per_page: 10)
     end
 
     json_response(@products)

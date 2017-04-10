@@ -7,6 +7,8 @@ class Product < ApplicationRecord
 
     has_many :likes
 
-    scope :likes, -> { left_joins(:likes).select('products.*, COUNT(*) AS likes_count').group("products.id").order("count(products.id) DESC") }
+    scope :order_by_likes, -> { left_joins(:likes).select('products.*, COUNT(*) AS likes_count').group("products.id").order("count(products.id) DESC") }
+
+    scope :order_by_names, -> { order(:name) }
 
 end
