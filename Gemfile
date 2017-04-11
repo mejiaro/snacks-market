@@ -31,7 +31,7 @@ gem 'will_paginate'
 # gem 'capistrano-rails', group: :development
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors'
 
 #test and seed data
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
