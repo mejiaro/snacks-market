@@ -1,8 +1,8 @@
 ## README
 
-###Snacks Market API 
+### Snacks Market API 
 
-####Setup
+#### Setup
 
 1. Create and change to a new gemset
 2. Run bundle install
