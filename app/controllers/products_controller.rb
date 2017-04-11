@@ -35,7 +35,8 @@ class ProductsController < ApplicationController
   # PUT /products/:id
   def update
     @product.update(product_params)
-    head :no_content
+    #head :no_content
+    json_response(@product)
   end
 
   # DELETE /products/:id
