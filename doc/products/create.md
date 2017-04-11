@@ -38,11 +38,6 @@
  
 * **Error Response:**
 
-  * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : ""message": "Couldn't find Product with 'id'=100"" }`
-
-  OR
-
   * **Code:** 422  <br />
     **Content:** `{ { "message": "Validation failed: 'attribute' can't be blank" } }`
 
