@@ -1,24 +1,14 @@
-# README
+## README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+###Snacks Market API 
 
-Things you may want to cover:
+####Setup
 
-* Ruby version
+1. Create and change to a new gemset
+2. Run bundle install
+3. Create and migrate db rails db:create && rake db:migrate
+4. Seed db rail db:seed
 
-* System dependencies
 
-* Configuration
+⋅⋅* The API hast been documented [here](doc). 
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
