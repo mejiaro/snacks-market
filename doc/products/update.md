@@ -20,7 +20,7 @@
  
    `name=[string]`
    `stock=[integer]`
-   `price=[string]
+   `price=[string]`
    
 
 * **Data Params**
