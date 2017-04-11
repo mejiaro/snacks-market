@@ -10,5 +10,7 @@
 4. Seed db rail db:seed
 
 
-⋅⋅* The API hast been documented [here](doc). 
+The API hast been documented [here](doc). 
+
+Get the frontend [here](https://github.com/mejiaro/snacks-market-frontend). 
 
