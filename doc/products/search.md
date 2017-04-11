@@ -1,10 +1,10 @@
-**Create Product**
+**Search Product**
 ----
-  Lists products. Accesible to users, admins and 3rd parties.
+  Search product list. Accesible to users, admins and 3rd parties.
 
 * **URL**
 
-  /products
+  /products/search
 
 * **Method:**
 
@@ -12,9 +12,13 @@
   
 *  **URL Params**
 
+  **Required:**
+ 
+   `name=[string]`
+   `page=[integer]`
+
   **Optional:**
  
-   `sort=[likes]`
    `page=[integer]`
    
 
@@ -36,7 +40,7 @@
                     },
                     {
                       "id": 34,
-                      "name": "Churrito",
+                      "name": "Frutsi",
                       "price": "0.2",
                       "stock": 16,
                       "created_at": "2017-04-11T02:26:20.598Z",
@@ -44,6 +48,3 @@
                     },
                     ...
                   }`
-* **Notes:**
-
-  <Products are sorted by name by default.>  
