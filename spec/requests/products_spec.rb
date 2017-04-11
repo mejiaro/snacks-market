@@ -134,17 +134,17 @@ RSpec.describe 'Products API', type: :request do
 	#test for PUT /products/:id
 
 	describe 'PUT /products/:id' do
-		let(:valid_attributes) { { name: 'Heartstone' }.to_json }
+		let(:valid_attributes) { { name: 'Hearthstone' }.to_json }
 
 		context 'when the record exists' do
 			before { put "/products/#{product_id}", params: valid_attributes, headers: test_headers }
 
 			it 'updates the record' do
-				expect(response.body).to be_empty
+				expect(response.body).to include("Hearthstone")
 			end
 
-			it 'returns 204' do
-				expect(response).to have_http_status(204)
+			it 'returns 200' do
+				expect(response).to have_http_status(200)
 			end			
 		end
 	end
