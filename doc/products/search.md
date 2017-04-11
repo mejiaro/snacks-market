@@ -15,7 +15,6 @@
   **Required:**
  
    `name=[string]`
-   `page=[integer]`
 
   **Optional:**
  

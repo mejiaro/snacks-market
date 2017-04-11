@@ -22,15 +22,8 @@
 
 * **Success Response:**
 
-  * **Code:** 201 <br />
-    **Content:** `{ {
-                    "id": 32,
-                    "name": "Frutsi",
-                    "stock": 11,
-                    "price": "0.32",
-                    "created_at": "2017-04-09T22:07:43.036Z",
-                    "updated_at": "2017-04-11T02:35:47.374Z"
-                    }
+  * **Code:** 204 <br />
+    **Content:** `{ []
                   }`
  
 * **Error Response:**
