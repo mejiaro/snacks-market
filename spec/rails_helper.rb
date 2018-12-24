@@ -53,7 +53,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 
   #adds factory girl methods
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 
 
   #Database Cleaner setup from example

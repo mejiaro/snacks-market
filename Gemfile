@@ -7,10 +7,11 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.2'
+gem 'rails', '5.2.2'
+gem 'bootsnap'
 
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
@@ -51,7 +52,7 @@ group :development do
 end
 
 group :test do
-	gem 'factory_girl_rails'
+	gem 'factory_bot_rails'
 	gem 'shoulda-matchers'
 	gem 'database_cleaner'
 end
