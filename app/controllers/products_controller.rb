@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  skip_before_action :authorize_request, only: [:index, :search]
+  skip_before_action :doorkeeper_authorize!, only: [:index, :search]
   before_action :is_admin?, only: [:update, :create, :destroy]
 	before_action :set_product, only: [:show, :update, :destroy, :like]
 

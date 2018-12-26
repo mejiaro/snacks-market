@@ -10,6 +10,8 @@ end
 gem 'rails', '5.2.2'
 gem 'bootsnap'
 
+gem 'devise'
+gem 'doorkeeper'
 # Use Puma as the app server
 gem 'puma'
 
