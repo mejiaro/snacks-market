@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {registrations: 'registrations'}, skip: [:sessions, :password]
   use_doorkeeper do
     skip_controllers :applications, :authorized_applications
   end
