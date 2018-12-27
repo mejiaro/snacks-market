@@ -5,7 +5,6 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
     resource.save
-    p resource.errors
     if resource.persisted?
       if resource.active_for_authentication?
         render json: resource 

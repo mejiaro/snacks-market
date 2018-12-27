@@ -14,6 +14,7 @@ gem 'devise'
 gem 'doorkeeper'
 # Use Puma as the app server
 gem 'puma'
+gem 'sidekiq'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'

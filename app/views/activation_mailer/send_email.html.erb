@@ -1,0 +1,7 @@
+<p>
+  Hi <%= @user.name %>,
+</p>
+<p>
+  Thanks for siging up!
+</p>
+<p><%= link_to 'Confirm my account', confirmation_url(@user, confirmation_token: @user.confirmation_token) %></p>
