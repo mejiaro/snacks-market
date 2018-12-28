@@ -4,7 +4,7 @@
 
 * **URL**
 
-  /auth/login
+  /oauth/token
 
 * **Method:**
 
@@ -16,6 +16,7 @@
  
    `email=[string]`
    `password=[string]`
+   `grant_type=[string]`
 
 * **Data Params**
 

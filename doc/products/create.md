@@ -17,6 +17,7 @@
    `name=[string]`
    `stock=[integer]`
    `price=[string]`
+   `image=[file]`
    
 
 * **Data Params**
