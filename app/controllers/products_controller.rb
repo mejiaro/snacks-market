@@ -5,11 +5,10 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-
     if params[:sort] == 'likes'
       @products = Product.order_by_likes.paginate(page: params[:page], per_page: 10)
     else
-      @products = Product.order_by_names.paginate(page: params[:page], per_page: 10)
+      @products = FindProducts.new(Product.all).call(params)
     end
 
     json_response(@products)
@@ -17,7 +16,8 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @products = Product.starts_with(params[:name]).paginate(page: params[:page], per_page: 10)
+    #@products = Product.starts_with(params[:name]).paginate(page: params[:page], per_page: 10)
+    @products = FindProducts.new(Product.all).call(params)
     json_response(@products)
   end
 
