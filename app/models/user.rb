@@ -1,7 +1,10 @@
 class User < ApplicationRecord
-	has_secure_password
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :validatable, :confirmable
 	
-	validates_presence_of :name, :email, :password_digest
+	validates_presence_of :name, :email
 
 	has_many :likes
 	has_many :products, through: :likes #liked products
@@ -11,4 +14,8 @@ class User < ApplicationRecord
 	def admin?
 		is_admin		
 	end
+
+  def send_devise_notification(notification, *args)
+    ActivationMailerJob.perform_now(self.id)
+  end
 end

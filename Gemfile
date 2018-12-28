@@ -10,8 +10,13 @@ end
 gem 'rails', '5.2.2'
 gem 'bootsnap'
 
+gem 'devise'
+gem 'doorkeeper'
 # Use Puma as the app server
 gem 'puma'
+gem 'sidekiq'
+
+gem "aws-sdk-s3", require: false
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'

@@ -26,6 +26,21 @@ RSpec.describe 'Products API', type: :request do
 
 	end
 
+	#sort_by price
+	describe 'GET /products' do
+		before { get '/products', params: {sort_by: 'price', sort_direction: :asc}, headers: headers }
+
+		it 'returns products' do
+			expect(json).not_to be_empty
+			expect(json.size).to eq(10) #the numbers of records created
+		end
+
+		it 'returns status code 200' do
+			expect(response).to have_http_status(200)
+		end
+
+	end
+
 	#tests for get /products/:id
 
 	describe 'GET /products/:id' do

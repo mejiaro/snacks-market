@@ -33,7 +33,7 @@ Product.create!(name: 'Airheads',
 end
 
 10.times do
-  name = Faker::RickAndMorty.character
+  name = Faker::TvShows::RickAndMorty.unique.character
   User.create!(name: name,
                email: name.delete(' ').downcase+'@snacks.io',
                password: 'ilovesnacks',
