@@ -9,9 +9,9 @@ class Product < ApplicationRecord
 
     has_many :orders
 
-    scope :order_by_likes, -> { joins(:likes).select('products.*, COUNT(products.id) AS likes_count').group("products.id").order("count(products.id) DESC") }
+    has_one_attached :image
 
-    scope :order_by_names, -> { order(:name) }
+    scope :order_by_likes, -> { joins(:likes).select('products.*, COUNT(products.id) AS likes_count').group("products.id").order("count(products.id) DESC") }
 
     scope :starts_with, -> (name) { where("lower(name) like ?", "#{name.downcase}%")}
 

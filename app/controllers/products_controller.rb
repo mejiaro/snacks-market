@@ -54,7 +54,7 @@ class ProductsController < ApplicationController
 
   def product_params
     # whitelist params
-    params.permit(:name, :price, :stock)
+    params.permit(:name, :price, :stock, :image)
   end
 
   def set_product
