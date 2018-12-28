@@ -16,6 +16,8 @@ gem 'doorkeeper'
 gem 'puma'
 gem 'sidekiq'
 
+gem "aws-sdk-s3", require: false
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 
